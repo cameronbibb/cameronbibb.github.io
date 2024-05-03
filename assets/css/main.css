@@ -3399,6 +3399,12 @@ button:disabled,
   }
 }
 
+@media screen and (max-width: 411px) {
+  #header h1 {
+    visibility: hidden;
+  }
+}
+
 /* Menu */
 
 #page-wrapper {
