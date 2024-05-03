@@ -1,5 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,700|Source+Sans+Pro:300,600,300italic,600italic");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 /*
 	Solid State by HTML5 UP
@@ -2200,15 +2201,6 @@ hr.major {
     padding-top: 2.5em;
   }
 }
-/* Star Canvas */
-
-canvas {
-  width: 100%;
-  height: 200%;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-}
 
 /* Section/Article */
 
@@ -2216,19 +2208,22 @@ section.special,
 article.special {
   text-align: center;
 }
-/* Haven Section */
+/* Willow Section */
 section#one p {
   color: #000000;
 }
 
 section#one h2 {
-  color: #000000;
+  color: #409935;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: 500;
   border-bottom: solid 2px rgba(0, 0, 0, 0.125);
   font-size: 2em;
 }
 
 section#one .inner {
-  padding-top: 0;
+  padding-top: 3em;
+  padding-bottom: 3em;
 }
 
 section#one .special {
@@ -2245,6 +2240,18 @@ section#one .button:hover {
 
 section#one .button:active {
   background-color: rgba(69, 85, 141, 0.175);
+}
+
+#diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: 0 auto; */
+}
+
+#diagram img {
+  height: 100%;
+  width: 100%;
 }
 
 /* Form */
@@ -2316,6 +2323,22 @@ form > .fields > .field.quarter {
 
   form > .fields > .field.quarter {
     width: calc(100% - 1.5em);
+  }
+
+  h2.major.willowTitle {
+    text-align: center;
+  }
+
+  #willowLogo {
+    text-align: center;
+  }
+
+  #willowLogo a {
+    width: 60%;
+  }
+
+  a.image {
+    margin: 0;
   }
 }
 
@@ -3154,14 +3177,14 @@ button:disabled,
   opacity: 0.25;
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   input[type="submit"],
   input[type="reset"],
   input[type="button"],
   button,
   .button {
   }
-}
+} */
 
 /* Features */
 
@@ -3685,7 +3708,7 @@ body.is-menu-visible #menu .inner {
   font-weight: 200;
   letter-spacing: 0.1em;
   line-height: 2;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 @media screen and (max-width: 1280px) {
@@ -4062,6 +4085,13 @@ body.is-preload #banner p {
   -ms-flex: 1;
 }
 
+.wrapper.spotlight .image.willowLogo {
+  margin: 0 3em 2em 0;
+  width: 15em;
+  overflow: hidden;
+  -ms-flex: 1;
+}
+
 .wrapper.spotlight .image img {
   width: 100%;
 }
@@ -4268,8 +4298,8 @@ body.is-preload #banner p {
   }
 
   .wrapper.spotlight .image {
-    margin: 0 0 1em 0 !important;
-    max-width: 85%;
+    margin: 0 0 0em 0 !important;
+    max-width: 100%;
     width: 12em;
   }
 }
