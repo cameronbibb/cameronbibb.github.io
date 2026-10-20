@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { formatYears } from "../lib/dates";
+import { hasDetailPage } from "../lib/work";
+
+interface Props {
+  entry: CollectionEntry<"work">;
+}
+
+const { entry } = Astro.props;
+const years = formatYears(entry.data.startYear, entry.data.endYear);
+const showLink = hasDetailPage(entry);
+---
+
+<div class="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800">
+  <div class="flex flex-col gap-6 rounded-full">
+    <div class="flex gap-4 items-center">
+      {
+        entry.data.logo && (
+          <Image
+            src={entry.data.logo}
+            alt={`${entry.data.title} logo`}
+            class="h-10 w-auto rounded-full"
+          />
+        )
+      }
+      <h3 class="font-body text-xl">{entry.data.title}</h3>
+      <span class="font-mono text-xs text-paper-dim/60 ml-auto">{years}</span>
+    </div>
+    <div class="flex flex-col gap-4">
+      <p class="">{entry.data.summary}</p>
+    </div>
+    {
+      showLink && (
+        <div class="flex flex-col items-end">
+          <a
+            href={`/work/${entry.id}`}
+            class="font-mono group inline-flex items-center text-primary-500 decoration-accent-500 hover:underline hover:underline-offset-8"
+          >
+            more <span class="group-hover:text-accent-500">→</span>
+          </a>
+        </div>
+      )
+    }
+  </div>
+</div>

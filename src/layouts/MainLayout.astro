@@ -1,0 +1,29 @@
+---
+import Header from "@components/Header";
+import "@styles/global.css";
+
+interface Props {
+  title: string;
+  path: string;
+}
+
+const { title, path } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Cameron Bibb - {title}</title>
+  </head>
+  <body class="font-body bg-navy-950 text-white relative">
+    <Header currentPath={path} client:load />
+    <div class="min-h-screen flex flex-col pt-30 md:pt-20">
+      <slot />
+    </div>
+  </body>
+</html>
