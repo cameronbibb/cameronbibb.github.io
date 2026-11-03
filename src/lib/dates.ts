@@ -11,3 +11,12 @@ export function formatYears(startYear: number, endYear?: number): string {
   if (endYear === startYear) return `${startYear}`;
   return `${startYear}–${endYear}`;
 }
+
+export function formatPubDate(pubDate: Date): string {
+  return pubDate.toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}

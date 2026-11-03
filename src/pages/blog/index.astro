@@ -1,5 +1,5 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import BlogPostCard from "@components/BlogPostCard.astro";
 import { getCollection } from "astro:content";
 
@@ -13,18 +13,17 @@ const posts = (await getCollection("blog")).sort(
     <div
       class="max-w-2xl mx-auto flex flex-col space-y-5 font-body text-base pb-5"
     >
-      <h1 class="font-body text-4xl lg:text-5xl font-bold mb-6">Blog</h1>
+      <h1 class="font-display text-center text-4xl lg:text-5xl font-bold mb-6">
+        Code-Stache
+      </h1>
       <p class="text-gray-400">
         Welcome to my blog! Consider it an invitation to step inside my brain
         and see how I think.
       </p>
       <section class="flex flex-col pt-6 md:pt-12">
-        <h2
-          class="font-display text-center text-2xl lg:text-4xl font-bold mb-6"
-        >
-          Code-Stache
-        </h2>
-        {posts.map((post) => <BlogPostCard post={post} />)}
+        <div class="flex flex-col gap-12">
+          {posts.map((post) => <BlogPostCard post={post} />)}
+        </div>
       </section>
     </div>
   </main>

@@ -13,7 +13,7 @@ const years = formatYears(entry.data.startYear, entry.data.endYear);
 const showLink = hasDetailPage(entry);
 ---
 
-<div class="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800">
+<div class="bg-gray-900 rounded-2xl p-6">
   <div class="flex flex-col gap-6 rounded-full">
     <div class="flex gap-4 items-center">
       {
@@ -25,15 +25,17 @@ const showLink = hasDetailPage(entry);
           />
         )
       }
-      <h3 class="font-body text-xl">{entry.data.title}</h3>
-      <span class="font-mono text-xs text-paper-dim/60 ml-auto">{years}</span>
+      <h3 class="font-body text-xl hover:text-accent-500">
+        <a href=`/work/${entry.id}`>{entry.data.title}</a>
+      </h3>
+      <span class="font-mono text-xs text-gray-400 ml-auto">{years}</span>
     </div>
     <div class="flex flex-col gap-4">
       <p class="">{entry.data.summary}</p>
     </div>
     {
       showLink && (
-        <div class="flex flex-col items-end">
+        <div class="flex flex-col items-start">
           <a
             href={`/work/${entry.id}`}
             class="font-mono group inline-flex items-center text-primary-500 decoration-accent-500 hover:underline hover:underline-offset-8"

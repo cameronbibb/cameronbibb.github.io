@@ -1,9 +1,8 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header";
+import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection, render } from "astro:content";
-import { formatYears } from "../../lib/dates";
-import { hasDetailPage } from "../../lib/work";
+import { formatYears } from "@lib/dates";
+import { hasDetailPage } from "@lib/work";
 
 export async function getStaticPaths() {
   const work = await getCollection("work");
@@ -19,27 +18,27 @@ const { Content } = await render(entry);
 const years = formatYears(entry.data.startYear, entry.data.endYear);
 ---
 
-<Layout title={entry.data.title}>
-  <Header currentPath="/work" />
-  <main class="min-h-screen px-6 lg:px-12 py-12">
-    <article class="max-w-3xl mx-auto px-6 py-16">
-      <a
-        href="/work"
-        class="font-mono text-xs text-paper-dim/60 hover:text-accent-500"
-      >
+<MainLayout title={entry.data.title} path=`/work/${entry.id}`>
+  <main class="px-6 lg:px-12 py-12">
+    <div class="max-w-2xl mx-auto">
+      <a href="/work" class="font-mono text-xs hover:text-accent-500">
         ← work
       </a>
+      <article>
+        <header class="flex justify-start items-center">
+          <h1 class="font-mono text-4xl lg:text-5xl font-bold mb-6 mt-8">
+            {entry.data.title}
+          </h1>
+          <div class="font-mono text-xs text-gray-400 ml-2">{years}</div>
+        </header>
 
-      <header class="flex items-center gap-4 mt-8 mb-4">
-        <h1 class="font-mono text-4xl lg:text-5xl">{entry.data.title}</h1>
-        <span class="font-mono text-xs text-paper-dim/60 ml-auto">{years}</span>
-      </header>
-
-      <p class="text-paper-dim mb-12">{entry.data.summary}</p>
-
-      <div class="prose-content">
-        <Content />
-      </div>
-    </article>
+        <p class="bg-gray-300 text-navy-950 font-mono mb-6 p-4">
+          {entry.data.summary}
+        </p>
+        <div class="md-content">
+          <Content />
+        </div>
+      </article>
+    </div>
   </main>
-</Layout>
+</MainLayout>

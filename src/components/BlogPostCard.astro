@@ -1,4 +1,5 @@
 ---
+import { formatPubDate } from "@lib/dates";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
@@ -8,4 +9,23 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<div class="bg-gray-900 p-6 hover:bg-gray-800"></div>
+<div class="group">
+  <div class="flex flex-row justify-between items-center mb-2">
+    <a
+      href=`/blog/${post.id}`
+      class="font-mono font-bold text-xl text-primary-500 hover:underline hover:decoration-accent-500 hover:underline-offset-8"
+      >{post.data.title}</a
+    >
+    <span class="text-gray-400 text-sm"
+      >[{formatPubDate(post.data.pubDate)}]</span
+    >
+  </div>
+  <div class="flex flex-row">
+    <p class="mr-2">></p><p>
+      {post.data.description}<span
+        class="ml-2 group-hover:animate-blink motion-reduce:animate-none"
+        >|</span
+      >
+    </p>
+  </div>
+</div>

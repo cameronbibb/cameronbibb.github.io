@@ -1,29 +1,11 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
-// import JobItem from "../../components/JobItem.astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 
 const work = await getCollection("work");
 
-const flagships = work
-  .filter((e) => e.data.kind === "flagship")
-  .sort((a, b) => a.data.order - b.data.order);
-
-const projects = work
-  .filter((e) => e.data.kind === "project")
-  .sort((a, b) => a.data.order - b.data.order);
-
-// Flagship and project bodies are rendered on their own /work/<slug> pages,
-// so the cards here only need frontmatter.
-
-const jobs = work
-  .filter((e) => e.data.kind === "job")
-  .sort((a, b) => a.data.order - b.data.order);
-
-const jobsRendered = await Promise.all(
-  jobs.map(async (j) => ({ entry: j, ...(await render(j)) })),
-);
+work.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <MainLayout title="Work" path="/work">
@@ -34,27 +16,8 @@ const jobsRendered = await Promise.all(
       <h1 class="font-body text-4xl lg:text-5xl font-bold mb-6">Work</h1>
 
       <section class="flex flex-col gap-6">
-        {flagships.map((entry) => <ProjectCard entry={entry} />)}
-
-        {projects.map((entry) => <ProjectCard entry={entry} />)}
+        {work.map((entry) => <ProjectCard entry={entry} />)}
       </section>
-
-      <!-- <section class="max-w-3xl mx-auto px-6 pb-24">
-        <h2
-          class="font-mono text-sm text-paper-dim uppercase tracking-wider mb-4"
-        >
-          Employment (how I pay the bills)
-        </h2>
-        <div class="border-t border-navy-700/40">
-          {
-            jobsRendered.map(({ entry, Content }) => (
-              <JobItem entry={entry}>
-                <Content />
-              </JobItem>
-            ))
-          }
-        </div>
-      </section> -->
     </div>
   </main>
 </MainLayout>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "@fontsource-variable/fraunces";
 @import "@fontsource-variable/inter";
 @import "@fontsource/ibm-plex-mono";
@@ -42,14 +43,40 @@
 
   --animate-fade-in: fadeIn 0.5s ease-in-out;
   --animate-slide-up: slideUp 0.5s ease-out;
+
+  --animate-blink: blink 1s step-end infinite;
 }
 
 @layer components {
+  /* 1. Base styles from Tailwind Typography */
   .md-content {
-    @apply text-gray-200;
+    @apply prose prose-invert prose-lg max-w-none;
+
+    /* 2. Colors. Prose reads all its colors from these variables. */
+    --tw-prose-body: var(--color-gray-200);
+    --tw-prose-headings: var(--color-primary-400);
+    --tw-prose-links: var(--color-primary-400);
+    --tw-prose-bold: var(--color-gray-100);
+    --tw-prose-code: var(--color-accent-400);
+    --tw-prose-quote-borders: var(--color-accent-500);
+    --tw-prose-captions: var(--color-gray-400);
   }
+
+  /* 3. Per-element overrides */
   .md-content a {
-    @apply text-primary-400 hover:text-accent-500;
+    @apply hover:text-accent-500;
+  }
+
+  .md-content :is(h2, h3) {
+    @apply font-display;
+  }
+
+  .md-content img {
+    @apply mx-auto my-6 w-auto max-h-[70vh] rounded-md;
+  }
+
+  .md-content figcaption {
+    @apply text-center -mt-4;
   }
 }
 
@@ -70,5 +97,11 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }

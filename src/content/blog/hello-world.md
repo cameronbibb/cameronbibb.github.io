@@ -13,4 +13,4 @@ But it is the beginning of trying something new—building in public. Working on
 
 This is something that is so uncomfortable for me. I sometimes get stuck scrolling the sub-comments, which can be filled with a lot of vitriol. So, I’m scared people will look at my sideways and think I’m stupid. But I also see a lot of encouragement for doing work in this way. There are a lot of kind and helpful people out there as well. So, I’m hopeful. I hope that there are people out there who will see what I’m doing and offer constructive insight and criticism rather than negative criticism.
 
-![alt text](image.png)
+![screenshot of blog ideas](blog-ideas.png)

@@ -1,6 +1,6 @@
 ---
 title: "Willow"
-kind: "flagship"
+# kind: "flagship"
 order: 1
 logo: "@assets/willow.png"
 startYear: 2024
