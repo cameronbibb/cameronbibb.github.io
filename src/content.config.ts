@@ -1,5 +1,5 @@
 import { defineCollection } from "astro:content";
-import { url, z } from "astro/zod";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
 const work = defineCollection({
@@ -7,7 +7,6 @@ const work = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      // kind: z.enum(["flagship", "project", "job"]),
       order: z.number().default(0),
       logo: image().optional(),
       startYear: z.number(),

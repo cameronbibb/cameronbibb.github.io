@@ -1,6 +1,5 @@
 ---
 title: "BacklogUp"
-kind: "project"
 order: 3
 startYear: 2022
 summary: "Designed and built an app for cataloging and maintaining a video game backlog."

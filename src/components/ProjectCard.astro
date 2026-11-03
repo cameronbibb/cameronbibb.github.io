@@ -26,7 +26,13 @@ const showLink = hasDetailPage(entry);
         )
       }
       <h3 class="font-body text-xl hover:text-accent-500">
-        <a href=`/work/${entry.id}`>{entry.data.title}</a>
+        {
+          showLink ? (
+            <a href={`/work/${entry.id}`}>{entry.data.title}</a>
+          ) : (
+            entry.data.title
+          )
+        }
       </h3>
       <span class="font-mono text-xs text-gray-400 ml-auto">{years}</span>
     </div>

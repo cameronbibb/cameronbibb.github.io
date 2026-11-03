@@ -1,7 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import * as aboutPost from "@content/about-post.md";
-const { title, updated } = aboutPost.frontmatter;
+const { updated } = aboutPost.frontmatter;
 ---
 
 <MainLayout title="About" path="/about">
@@ -11,7 +11,7 @@ const { title, updated } = aboutPost.frontmatter;
     >
       <h1 class="font-body text-4xl lg:text-5xl font-bold mb-6">About Me</h1>
       <div class="md-content"><aboutPost.Content /></div>
-      <div class="italic text-right border-t-1 border-accent-500">
+      <div class="italic text-right border-t border-accent-500">
         updated: {updated}
       </div>
     </div>

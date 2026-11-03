@@ -7,8 +7,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 import { satteri } from "@astrojs/markdown-satteri";
 
+import { defineHastPlugin } from "satteri";
+
 /** Open external links in Markdown in a new tab. */
-const externalLinks = {
+const externalLinks = defineHastPlugin({
   name: "external-links",
   element: {
     filter: ["a"],
@@ -20,7 +22,7 @@ const externalLinks = {
       }
     },
   },
-};
+});
 
 // https://astro.build/config
 export default defineConfig({
